@@ -2,13 +2,7 @@ from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
 
-
 def classify_image(pathhh):
-    from keras.models import load_model  # TensorFlow is required for Keras to work
-    from PIL import Image, ImageOps  # Install pillow instead of PIL
-    import numpy as np
-
-
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
 
@@ -48,8 +42,11 @@ def classify_image(pathhh):
     # Print prediction and confidence score
     # print("Class:", class_name[2:], end="")
     # print("Confidence Score:", confidence_score)
-    if class_name == "Hotdog" & confidence_score >= 50:
+    if class_name.strip() == "Hotdog" and confidence_score >= 0.5:
         return True
+    elif class_name == "Not_Hotdog" and confidence_score >= 0.5:
+        return False 
     else:
-        return False
+        return False #redundant but idc
+        
 

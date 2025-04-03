@@ -1,10 +1,10 @@
 import shutil
 import os
-from Classifier.py import classify_image
+from Classifier import classify_image
 
 Main_dir="C:\\Users\\sys4dmin\\Documents\\Development\\NotHotDog\\Testing"
 HD_dir="C:\\Users\\sys4dmin\\Documents\\Development\\NotHotDog\\Testing\\Hotdog"
-Other_dir="C:\\Users\\sys4dmin\\Documents\\Development\\NotHotDog\\Testing\\Other"
+Other_dir= "C:\Users\sys4dmin\Documents\Development\NotHotDog\Testing\Other"
 
 def get_images_from_directory(directory, valid_extensions=(".jpg", ".jpeg", ".png")):
     #Returns a list of image file paths from the specified directory.
@@ -19,6 +19,7 @@ def move_image(image_path, destination_folder):
 
 
 images = get_images_from_directory(Main_dir)
+print(images)
 
 for image in images:
         is_hotdog = classify_image(image)
