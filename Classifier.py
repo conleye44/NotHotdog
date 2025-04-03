@@ -36,15 +36,18 @@ def classify_image(pathhh):
     # Predicts the model
     prediction = model.predict(data)
     index = np.argmax(prediction)
-    class_name = class_names[index]
+    class_name = class_names[index].strip().split(" ", 1)[1]
     confidence_score = prediction[0][index]
+
+    print("Class:", class_name[2:], end=" ")
+    print("Confidence Score:", confidence_score)
 
     # Print prediction and confidence score
     # print("Class:", class_name[2:], end="")
     # print("Confidence Score:", confidence_score)
-    if class_name.strip() == "Hotdog" and confidence_score >= 0.5:
+    if class_name.strip() == "Hotdog":
         return True
-    elif class_name == "Not_Hotdog" and confidence_score >= 0.5:
+    elif class_name.strip() == "Not_Hotdog":
         return False 
     else:
         return False #redundant but idc
