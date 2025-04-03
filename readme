@@ -1,0 +1,53 @@
+# Not Hotdog Image Classifier
+
+## Overview
+This project sorts images into two categories: **Hotdog** and **Other**, using a TensorFlow model trained with Google's Teachable Machine. It moves images into their respective directories based off of output from the model.
+
+## Directory Structure
+```
+Testing/                # Base folder (user must create)
+│── To_Sort/           # Unsorted images go here
+│── Hotdog/            # Hotdog images are moved here
+│── Other/             # Non-hotdog images are moved here
+```
+
+## Requirements
+Ensure you have the following dependencies installed:
+```
+pip install tensorflow pillow
+```
+
+## Files
+### `Classifier.py`
+Contains the function `classify_image(image_path)`, which:
+- Loads the trained TensorFlow model (`keras_Model.h5`).
+- Reads class labels from `labels.txt`.
+- Loads and formats an image (image_path)
+- Predicts whether the image is a **Hotdog** or **Not a Hotdog**.
+- Returns `True` if the image is a hotdog, and `False` if not.
+
+### `main.py`
+Handles image classification and sorting:
+- Takes the base directory path from the user.
+- Processes all images in `To_Sort/`.
+- Moves images classified as **Hotdog** to `Hotdog/`.
+- Moves other images to `Other/`.
+- Prints out each file move.
+
+## Usage
+1. Place images to be classified in the `Testing/To_Sort/` directory.
+2. Run `main.py`:
+   ```
+   python main.py
+   ```
+3. 
+3. The script will classify and move images to the appropriate folders.
+
+## Troubleshooting
+- Ensure `keras_Model.h5` and `labels.txt` are in the same directory as `Classifier.py`.
+- Double-check that `To_Sort/`, `Hotdog/`, and `Other/` directories exist.
+- If `ModuleNotFoundError: No module named 'PIL'` occurs, install `pillow`:
+  ```
+  pip install pillow
+  ```
+
